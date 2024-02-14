@@ -1,0 +1,311 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "contact": {}
+    },
+    "paths": {
+        "/api/advancedTxnsDataOfBlock/{blockNo}": {
+            "get": {
+                "description": "Get InternalTxn and StateDiff Information about Txns of blockNo {blockNo}",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "GetAdvancedTxnsDataOfBlock"
+                ],
+                "summary": "Get Advanced information about Txns",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "blockNo",
+                        "name": "blockNo",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resource.ResJSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "$ref": "#/definitions/core.AdvancedTxData"
+                                            }
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resource.ResJSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/resource.ResErr"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "/api/txDecoder/{txHash}": {
+            "get": {
+                "description": "Get decoded information of Transacion : {txHash}",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "TxDecoder"
+                ],
+                "summary": "Get decoded information about Tx",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "txHash",
+                        "name": "txHash",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resource.ResJSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/core.TxDecoded"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "allOf": [
+                                {
+                                    "$ref": "#/definitions/resource.ResJSON"
+                                },
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "$ref": "#/definitions/resource.ResErr"
+                                        }
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "core.AdvancedTxData": {
+            "type": "object",
+            "properties": {
+                "internal_txn": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/core.InternalTxn"
+                    }
+                },
+                "state_diff": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/core.ParsedStateDiff"
+                    }
+                },
+                "tx_hash": {
+                    "type": "string"
+                }
+            }
+        },
+        "core.InternalTxn": {
+            "type": "object",
+            "properties": {
+                "from": {
+                    "type": "string"
+                },
+                "gas_limit": {
+                    "type": "string"
+                },
+                "to": {
+                    "type": "string"
+                },
+                "type_trace": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "core.ParsedStateDiff": {
+            "type": "object",
+            "properties": {
+                "address": {
+                    "type": "string"
+                },
+                "balance_after": {
+                    "type": "string"
+                },
+                "balance_before": {
+                    "type": "string"
+                },
+                "code_after": {
+                    "type": "string"
+                },
+                "code_before": {
+                    "type": "string"
+                },
+                "nonce_after": {
+                    "type": "string"
+                },
+                "nonce_before": {
+                    "type": "string"
+                },
+                "storage": {},
+                "storage_decimal": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/core.StorageDecimal"
+                    }
+                }
+            }
+        },
+        "core.StorageDecimal": {
+            "type": "object",
+            "properties": {
+                "after": {
+                    "type": "string"
+                },
+                "before": {
+                    "type": "string"
+                },
+                "storage_address": {
+                    "type": "string"
+                }
+            }
+        },
+        "core.TxDecoded": {
+            "type": "object",
+            "properties": {
+                "blockNo": {
+                    "description": "swag 에서 cannot find type definition: big.Int 라는 오류 발생해서, uint64로 변경함.\nBlock     *big.Int `json:\"blockNo\"`     //txReceipt : receipt.BlockNumber\nGasTipCap *big.Int `json:\"gas_tip_cap\"` //tx: gasTipCap()\nGasFeeCap *big.Int `json:\"gas_fee_cap\"` //tx: gasFeeCap()",
+                    "type": "string"
+                },
+                "contract_type": {
+                    "description": "erc20, erc721, erc1155, etc",
+                    "type": "string"
+                },
+                "decoded_input_data": {
+                    "type": "string"
+                },
+                "decoded_log_topics": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "from": {
+                    "description": "Timestamp\tuint64\t\t\t// timestamp는 블럭에서 가져올건데, 이 api 에서는 tx 바로 호출하니깐, 이것까지 주려면 따로 block 호출해야되서 pass, 나중에 블럭기준으로 처리하는 db 만들때 넣어주자.",
+                    "type": "string"
+                },
+                "gas_fee_cap": {
+                    "description": "tx: gasFeeCap()",
+                    "type": "integer"
+                },
+                "gas_price": {
+                    "description": "tx: gasPrice()",
+                    "type": "integer"
+                },
+                "gas_tip_cap": {
+                    "description": "tx: gasTipCap()",
+                    "type": "integer"
+                },
+                "gas_used": {
+                    "description": "GasLimit       *big.Int  `json:\"gas_limit\"`      // TraceTx 에서 얻을 수 있더라... gasUsed도 나오고, traceTx 에도 나온다면... 이걸 굳이 여기서 보여줄필요가 있나??",
+                    "type": "integer"
+                },
+                "input_data": {
+                    "description": "이게 굳이 필요한지는 기획에서 결정할 사항... 필요 없을 것 같기는 한데...",
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "method_name": {
+                    "type": "string"
+                },
+                "nonce": {
+                    "description": "tx: nonce()",
+                    "type": "integer"
+                },
+                "output_data_map": {
+                    "type": "object",
+                    "additionalProperties": true
+                },
+                "status": {
+                    "description": "txReceipt : receipt.Status",
+                    "type": "integer"
+                },
+                "to": {
+                    "description": "tx: to()",
+                    "type": "string"
+                },
+                "tx_fee": {
+                    "description": "gasPrice * gasUsed",
+                    "type": "integer"
+                },
+                "value": {
+                    "description": "tx: value()",
+                    "type": "string"
+                }
+            }
+        },
+        "resource.ResErr": {
+            "type": "object",
+            "properties": {
+                "error": {
+                    "type": "string"
+                }
+            }
+        },
+        "resource.ResJSON": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "status": {
+                    "type": "integer"
+                }
+            }
+        }
+    }
+}

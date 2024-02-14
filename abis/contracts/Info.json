@@ -1,0 +1,99 @@
+[
+    {
+        "atheneSwap": {
+            "dev": {
+                "owner": "",
+                "feeTo": "",
+                "wksta": "",
+                "factory": "",
+                "router": "",
+                "pair": ""
+            },
+            "stg": {
+                "owner": "",
+                "feeTo": "",
+                "wksta": "",
+                "factory": "",
+                "router": "",
+                "pair": ""
+            },
+            "prd": {
+                "owner": "0x1743d2444DA46b7084C9F5396E837DA2e7537D17",
+                "feeTo": "0xaEf40727c63fA41c96c932722A956B7527111896",
+                "wksta": "0x7FEd80e42EE5D2410d556aA24f90AFA468929616",
+                "factory": "0xD5f52861601a618A84bda8c050266B4823519C08",
+                "router": "0xAc5c4825D78B4FA393033E12abd8Ee290521A0e8",
+                "pair": "0x9C6d5aC0F669442cdbb7E025504c00AFEAf9a2dA"
+            }
+        }
+    },
+    {
+        "kstadium": {
+            "dev": {
+                "communityPool": "0xd59CD990993be8A6e13aE00C386f56D986a99AF5",
+                "orgInfoFactory": "0xA6da016B5543b251D5ebfbE6A77D1e5Acd40bDf1",
+                "orgMgrInfo": "0xa1a734c84009f3Bcc98dB7da822685c31E9957DB",
+                "orgMgr": "0x77666FC406A576E789d5337cEbb8CC8D97ec98D9",
+                "sopToken": "0x7dcB32FFFFe697133f12b4F38e6c3B642fdD0148",
+                "vote": "0x20cF2E33C64954B1E3e19cC9a74134C029288d85"
+            },
+            "stg": {
+                "communityPool": "0xd001cccF1f237CA6DC6E60561ba0aC6A68959e7f",
+                "orgInfoFactory": "0x5469B6d39b5f12BB399187c3dCd62a92267e3Afb",
+                "orgMgrInfo": "0xA794D1b1F72C4F19A61df6F05BAA7E5468daCA68",
+                "orgMgr": "0x5Caf83fF9111D8eC1a07762CA7fA45f7ea76290a",
+                "sopToken": "0xcfB87222AA3E38f8f4A1316e87DeD1Fd4e55A6f9",
+                "vote": "0xcFCCf081629dc55506372B00A985ed07f660e228"
+            },
+            "prd": {
+                "communityPool": "0xc7bb408ca8b0a6af52C2699919eE9E443E92806B",
+                "orgInfoFactory": "0x6636AeFd96c78Eef85dbe8Fa48efC20C3a56D59A",
+                "orgMgrInfo": "0x1EA55fe3dFEFEa89594e79e852d44a9dC7ea7a5c",
+                "orgMgr": "0x21a34c702BfE8d06544e557FCc06965A86365933",
+                "sopToken": "0x0E820CaABeaaD7a865af5e54AFc6B82D8D4aFeA2",
+                "vote": "0x23004102b87bF8ec93768601FA0b4BA21948a296"
+            }
+        }
+    },
+    {
+        "bridge": {
+            "dev": {
+                "htlcCoin": "",
+                "htlcErc20": "",
+                "vaultCoin": "",
+                "vaultErc20": "",
+                "KOKToken": ""
+            },
+            "stg": {
+                "htlcCoin": "",
+                "htlcErc20": "",
+                "vaultCoin": "",
+                "vaultErc20": "",
+                "KOKToken": ""
+            },
+            "prd": {
+                "htlcCoin": "",
+                "htlcErc20": "",
+                "vaultCoin": "",
+                "vaultErc20": "",
+                "KOKToken": ""
+            }
+        }
+    },
+    {
+        "projectToken": {
+            "dev": {
+                "nst": "0x5d511636DAdfDc48dE01BC4dF326D384E91855EA",
+                "xdc": "0x56C53b132e4008766F0fC219DEb19Cc4DD18b7AF"
+            },
+            "stg": {
+                "nst": "0xb34Ccd5CdB1D3Bb67188A99C1EA45c266E8810Ac",
+                "xdc": "0x78c2dcB157f4261Be34636f2Aec20e31013fA9De"
+            },
+            "prd": {
+                "nst": "0xCC52AD94Cd96cb877F26A687D4BE575dd07E9e9B",
+                "xdc": "0x5C8212f7961C3b95dA761E6B0F369FCFceF52D3A"
+            }
+        }
+    }
+]
